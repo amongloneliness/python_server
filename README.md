@@ -3,12 +3,12 @@
 Implementation of socket server, client-user frontend page, and client-server interaction.
 
 User commands: 
-    1. auth [user] [password]       authorization user
-    2. list                         list files directory
-    3. info [FILE]...               print information about files: mime type, size, time created
-    4. retr [FILE]...               move files specified in string to directory
-    5. exit                         exit from account
-    6. help                         help on commands
+    1. auth [user] [password]       authorization user  
+    2. list                         list files directory  
+    3. info [FILE]...               print information about files: mime type, size, time created  
+    4. retr [FILE]...               move files specified in string to directory  
+    5. exit                         exit from account  
+    6. help                         help on commands  
 
 The **pass** file contains 2 lines: username and password for login. [its presence is required]
 

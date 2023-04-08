@@ -2,7 +2,7 @@
 ### Description
 Implementation of socket server, client-user frontend page, and client-server interaction.
 
-User commands: 
+User commands:  
     1. auth [user] [password]       authorization user  
     2. list                         list files directory  
     3. info [FILE]...               print information about files: mime type, size, time created  

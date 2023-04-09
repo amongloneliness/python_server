@@ -42,6 +42,13 @@ function submit() {
 
     // посимвольное заполнение текстового блока
     request_get(text).then(data => {
+        if (data.length == 0) {
+            // завершение работы для следующего запуска
+            is_submit = false;
+            sumbit();
+            return;
+        }
+
         container__output[0].textContent = ''; 
         
         for (let i = 0; i < data.length; i++) {

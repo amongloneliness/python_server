@@ -11,7 +11,9 @@ User commands:
     5. exit                         exit from account  
     6. help                         help on commands  
 
-The **pass** file contains 2 lines: username and password for login. [its presence is required]
+The **pass** file contains 2 lines: username and password for login. [its presence is required].
+
+The client web page is located in the client folder.
 
 ---
 

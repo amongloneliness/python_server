@@ -37,7 +37,7 @@ function submit() {
         is_submit = true;
 
 
-    let text = document.getElementsByClassName('container__input')[0].value;
+    let text = 'v:' + document.getElementsByClassName('container__input')[0].value;
     let addr = 'http://localhost:' + port
 
     // посимвольное заполнение текстового блока

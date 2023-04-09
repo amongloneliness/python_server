@@ -45,11 +45,14 @@ while True:
         client, address = localserver.accept()
 
         # Формируем тело пакета / ответа.
-        data = client.recv(buffer_size).decode('utf-8')
-        data_split = data.split('\n')
-        data_text = data_split.pop()
+        data_text = ''
 
-        print(len(data_text))
+        while len(data_text) == 0:
+            data = client.recv(buffer_size).decode('utf-8')
+            data_split = data.split('\n')
+            data_text = data_split.pop()
+            
+        data_text = data_text[2:]
 
         # Вывод тела полезной нагрузки из пакета.
         print('Содержимое:')

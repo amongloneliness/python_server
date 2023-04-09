@@ -45,35 +45,33 @@ while True:
         client, address = localserver.accept()
 
         # Формируем тело пакета / ответа.
-        data = client.recv(buffer_size).decode('utf-8')
-        data_split = data.split('\n')
-        data_text = data_split.pop()
+        data_text = ''
 
-        if len(data_text) != 0:
-            # оставляем часть после 'v:'
-            data_text = data_text[2:]
+        while len(data_text) != 0:
+            data = client.recv(buffer_size).decode('utf-8')
+            data_split = data.split('\n')
+            data_text = data_split.pop()
 
-            # Вывод тела полезной нагрузки из пакета.
-            print('Содержимое:')
-            print('  ' + data_text + '\n')
+        # оставляем часть после 'v:'
+        data_text = data_text[2:]
 
-            command = []
-            data_text = data_text.split(' ')
+        # Вывод тела полезной нагрузки из пакета.
+        print('Содержимое:')
+        print('  ' + data_text + '\n')
 
-            # Обработка лишних пробелов при парсинге.
-            for item in data_text:
-                if len(item) != 0:
-                    command.append(item)
+        command = []
+        data_text = data_text.split(' ')
 
-            # Результат обработки запроса.
-            result = server(command)
+        # Обработка лишних пробелов при парсинге.
+        for item in data_text:
+            if len(item) != 0:
+                command.append(item)
 
-            # Отправление HTTP пакета клиенту.'
-            client.send(HTTP_HDRS.encode('utf-8') + result.encode('utf-8'))
-        
-        else:
-            # Отправление HTTP пакета клиенту.'
-            client.send(HTTP_HDRS.encode('utf-8') + ''.encode('utf-8'))
+        # Результат обработки запроса.
+        result = server(command)
+
+        # Отправление HTTP пакета клиенту.'
+        client.send(HTTP_HDRS.encode('utf-8') + result.encode('utf-8'))
 
         # Отключаем клиента от очереди.
         client.shutdown(socket.SHUT_WR)

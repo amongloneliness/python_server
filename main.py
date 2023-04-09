@@ -45,13 +45,15 @@ while True:
         client, address = localserver.accept()
 
         # Формируем тело пакета / ответа.
-        data_text = ''
+        data = client.recv(buffer_size).decode('utf-8')
+        data_split = data.split('\n')
+        data_text = data_split.pop()
 
-        while len(data_text) != 0:
+        if len(data_text) == 0:
             data = client.recv(buffer_size).decode('utf-8')
             data_split = data.split('\n')
             data_text = data_split.pop()
-
+            
         # оставляем часть после 'v:'
         data_text = data_text[2:]
 

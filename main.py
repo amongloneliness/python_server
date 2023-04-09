@@ -49,6 +49,8 @@ while True:
         data_split = data.split('\n')
         data_text = data_split.pop()
 
+        print(len(data_text))
+
         # Вывод тела полезной нагрузки из пакета.
         print('Содержимое:')
         print('  ' + data_text + '\n')
